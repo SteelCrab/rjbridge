@@ -1,49 +1,50 @@
 # rjbridge
 After compiling the Rust code into a dynamic library, Java uses JNA (Java Native Access) to call the library's functions.
 
-# 요구 사항
+# Requirements
 
 - **Rust**  
-  [Rust 설치 페이지](https://www.rust-lang.org/tools/install)  
-  Rust와 Cargo가 설치되어 있어야 합니다.
+  [Rust Installation Page](https://www.rust-lang.org/tools/install)  
+  Rust and Cargo must be installed.
 
 - **Java JDK**  
-  [Java 다운로드 페이지](https://www.oracle.com/java/technologies/javase-downloads.html)  
-  Java JDK가 설치되어 있어야 합니다.
+  [Java Download Page](https://www.oracle.com/java/technologies/javase-downloads.html)  
+  Java JDK must be installed.
 
 - **JNA (Java Native Access)**  
-  이 프로젝트는 [JNA](https://github.com/java-native-access/jna)를 사용하여 Rust 동적 라이브러리와 연동합니다.  
+  This project uses [JNA](https://github.com/java-native-access/jna) to interface with the Rust dynamic library.  
   
-  ***소스 파일로 설치:***  
-     JNA GitHub 저장소(https://github.com/java-native-access/jna)에서 소스를 클론하여 빌드할 수 있습니다.
+  ***Install from Source:***  
+     You can clone the source from the JNA GitHub repository (https://github.com/java-native-access/jna) and build it.
   
-  본 예제에서는 JNA JAR 파일을 `jna-5.16.0/dist/jna.jar` 위치에 두고 사용한다고 가정합니다.
+  This example assumes that the JNA JAR file is located at `jna-5.16.0/dist/jna.jar`.
 
-# Rust 동적 라이브러리 빌드
+# Build Rust Dynamic Library
 
-1. `rustlib` 디렉터리로 이동합니다.
+1. Navigate to the `rustlib` directory.
 
    ```bash
    cd rustlib
    cargo build --release
     ```
-   빌드가 완료되면, rustlib/target/release/ 디렉터리에 플랫폼에 맞는 동적 라이브러리 파일이 생성됩니다.
+   After the build is complete, a platform-specific dynamic library file will be generated in the rustlib/target/release/ directory.
     * Linux: librustlib.so
     * macOS: librustlib.dylib
     * Windows: rustlib.dll
-# JAVA 소스파일 컴파일
-예시 (Linux/Mac):
+# Compile JAVA Source Files
+Example (Linux/Mac):
   ```bash
   cd java
   javac -cp .:/path/to/jna.jar RustLib.java Main.java
   ```
-  Windows에서는 클래스패스 구분자를 ;로 사용합니다.
-# JAVA 실행
-예시 (Linux/Mac):
+  On Windows, use ; as the classpath separator.
+# Run JAVA
+Example (Linux/Mac):
 ```bash
-# 프로젝트 루트 디렉토리에서 실행 
+# Run from the project root directory 
 java -Djna.library.path=./rustlib/target/release/ -cp java:jna-5.16.0/dist/jna.jar Main
 ```
-# 실행 결과 
+# Execution Result 
 ```bash
 Result: 30
+```
