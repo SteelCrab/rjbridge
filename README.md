@@ -47,4 +47,6 @@ java -Djna.library.path=./rustlib/target/release/ -cp java:jna-5.16.0/dist/jna.j
 # Execution Result 
 ```bash
 Result: 30
+Is Same: true
+In String: Hello Java - Rust here!
 ```
