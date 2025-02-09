@@ -8,8 +8,8 @@ public class Main {
         System.out.println("Result: " + result);
 
         String str = "Hello Java - Rust here!";
-        Pointer ptr1 = RustLib.INSTANCE.in_str(str);
-        Pointer ptr2 = RustLib.INSTANCE.in_str(str);
+        Pointer ptr1 = RustLib.INSTANCE.pool_str(str);
+        Pointer ptr2 = RustLib.INSTANCE.pool_str(str);
 
         boolean isSame = ptr1.equals(ptr2);
         System.out.println("Is Same: " + isSame);

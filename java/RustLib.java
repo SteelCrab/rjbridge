@@ -12,7 +12,7 @@ public interface RustLib extends Library {
     //입력된 문자열을 Rust의 문자열(&str) 저장하고 기존의 문자열을 재사용 함,
     //해당 문자열의 포인터를 반환함
 
-    Pointer in_str(String input);
+    Pointer pool_str(String input);
     
     void free_str_pool();
 }
